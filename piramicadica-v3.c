@@ -17,14 +17,7 @@ int main()
     int8 *pyramid = malloc(length);
 
     for(size_t i=0; i<length; i++)
-    {
         pyramid[i] = rand()%100;
-        printf("%d\t",pyramid[i]);    
-    }
-
-    
-
-    printf("\n\n\n");
     
     int prints = 0;
     for(int m=1; m<=n; m++)
@@ -48,21 +41,20 @@ int main()
     for(int i = 0; i < (n-1); i++)
     {
         times <<= 1;
-        times += 1;
+        times |= 1;
     }
-    printf("\n\n\n%u",times);
+    printf("\n\n\nTIMES %u\n\n",times);
 
     for(size_t o = 0; o<=times; o++){
-        acc = 0;
         // printf("\n\nTIMES: %d\n",o);
         bin = o;
+        acc = 0;
         size_t step = 0;
         for(size_t x=1 ; step<length ; x++)
         {
-            // printf("%d\t",pyramid[step]);
+            acc += pyramid[step];
             step += x+(bin & 1);
             bin >>= 1;
-            acc += pyramid[step];
         }
         if(bestAcc < acc){
             bestAcc = acc;
@@ -70,9 +62,7 @@ int main()
         }
     }
 
-    printf("\n\n\n%u",bestWay);
-    printf("\n%u",bestAcc);
-    printf("\n\n\n");
-    printf("\n\n\n%d",n);
+    printf("\n\n\nBW %u",bestWay);
+    printf("\nBA %u",bestAcc);
     return 0;
 }
