@@ -5,7 +5,7 @@
 
 typedef signed char int8;
 
-int banana(size_t pivot, int8 * data, size_t base )
+int search(size_t pivot, int8 * data, size_t base )
 {
     float sqrt_ = sqrt( 8 * pivot + 2);
     unsigned int label = (int)((sqrt_ - 1) / 2) + (int)(sqrt_ > (int)sqrt_);
@@ -13,12 +13,10 @@ int banana(size_t pivot, int8 * data, size_t base )
     if(label == base)
         return data[pivot];
 
-    int left = data[pivot] + banana(pivot + label, data, base);
+    int left = search(pivot + label, data, base);
+    int right = search(pivot + label + 1, data, base);
 
-
-    int right = data[pivot] + banana(pivot + label + 1, data, base);
-
-    return left > right ? left : right;
+    return left > right ?  data[pivot] + left :  data[pivot] + right;
 }
 
 void main()
@@ -47,7 +45,7 @@ void main()
     }
 
 
-    int a = banana(0, data, base);
+    int a = search(0, data, base);
     printf("FINISH");
     printf("\n best acc:\t %d", a);
 }
