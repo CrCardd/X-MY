@@ -11,7 +11,7 @@ int main()
     printf("Please insert the base:\n>> ");
     scanf(" %d", &n);
 
-
+        
     srand(time(NULL));
     size_t length = (n*(n+1))/2;
     int8 *pyramid = malloc(length);
