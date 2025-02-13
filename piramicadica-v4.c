@@ -7,8 +7,8 @@ typedef signed char int8;
 
 int search(size_t pivot, int8 * data, size_t base )
 {
-    float sqrt_ = sqrt( 8 * pivot + 2);
-    unsigned int label = (int)((sqrt_ - 1) / 2) + (int)(sqrt_ > (int)sqrt_);
+    float delta = sqrt( 8 * pivot + 2);
+    unsigned int label = (int)((delta - 1) / 2) + (int)(delta > (int)delta);
     
     if(label == base)
         return data[pivot];
